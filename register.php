@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
             $_SESSION['success'] = "Registration successful! Please log in.";
-            header('Location: index.php');
+            header('Location: login.php');
             exit;
         }
     }
@@ -68,6 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Form container -->
     <div class="container">
         <h2>Register</h2>
+        <?php if (!empty($errors)): ?>
+            <div class="error"><?php echo implode('<br>', $errors); ?></div>
+        <?php endif; ?>
         <form method="post">
             <input type="text" name="username" placeholder="Username" required>
             <input type="email" name="gmail" placeholder="Gmail" required>
