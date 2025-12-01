@@ -34,10 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="login-page">
     <div class="top-bar"></div>
-    <div class="logo-wrapper">
-        <img src="Assets/login/Choicehub.png" alt="Logo" class="logo">
-    </div>    
     <div class="container">
+        <img src="Assets/login/Choicehub.png" alt="Logo" class="logo">
         <?php if (!empty($error)): ?>
             <div class="error"><?php echo $error; ?></div>
         <?php endif; ?>

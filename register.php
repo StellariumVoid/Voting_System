@@ -2,7 +2,7 @@
 
 session_start();
 
-$usersFile = __DIR__ . '/../data/users.json';
+$usersFile = __DIR__ . '/data/users.json';
 $errors = [];
 
 if (!file_exists($usersFile)) {
@@ -25,7 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }  elseif (!filter_var($gmail, FILTER_VALIDATE_EMAIL) || substr($gmail, -10) !== '@gmail.com') {
         $errors[] = "Please enter a valid Gmail address.";
     } else {
-        $users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
+
+        $users = json_decode(file_get_contents($usersFile), true);
+        if (!is_array($users)) {
+        $users = [];
+        }
         foreach ($users as $user) {
             if ($user['gmail'] === $gmail) {
                 $errors[] = "Gmail is already registered.";
@@ -59,14 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="register-page">
     <div class="top-bar"></div>
-
-    <!-- Logo wrapper -->
-    <div class="logo-wrapper">
-        <img src="Assets/login/Choicehub.png" alt="Logo" class="logo">
-    </div>
-
     <!-- Form container -->
     <div class="container">
+        <img src="Assets/login/Choicehub.png" alt="Logo" class="logo">
         <h2>Register</h2>
         <?php if (!empty($errors)): ?>
             <div class="error"><?php echo implode('<br>', $errors); ?></div>
