@@ -15,13 +15,10 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dashboard-page">
-    <div class="top-bar"></div>
-    <div class="logo-wrapper">
+    <div class="top-bar">
         <a href="dashboard.php">
             <img src="Assets/Choicehub.png" alt="Logo" class="logo" id="logo">
         </a>
-    </div>
-    <div class="container">
     </div>
     <div class="user-welcome">
         <h1>Welcome, <?= htmlspecialchars($_SESSION['username']); ?>!</h1>
