@@ -17,7 +17,7 @@ if (!isset($_SESSION['user_id'])) {
 <body class="dashboard-page">
     <div class="top-bar">
         <a href="dashboard.php">
-            <img src="Assets/Choicehub.png" alt="Logo" class="logo" id="logo">
+            <img src="Assets/login/Choicehub.png" alt="Logo" id="dashboard-logo">
         </a>
     </div>
     <div class="user-welcome">
