@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error = "Invalid Gmail or password.";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,21 +31,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>ChoiceHub Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="login-page">
-    <div class="top-bar"></div>
-    <div class="container">
-        <img src="Assets/login/Choicehub.png" alt="Logo" class="logo">
-        <?php if (!empty($error)): ?>
-            <div class="error"><?php echo $error; ?></div>
-        <?php endif; ?>
+<body class="auth-page">
+
+<div class="auth-container">
+
+    <!-- Left branding -->
+    <div class="auth-left">
+        <h1>ChoiceHub</h1>
+        <p>Your best platform for voting polls</p>
+    </div>
+
+    <!-- Right content -->
+    <div class="auth-right">
         <h2>Login</h2>
+        <?php if (!empty($error)): ?>
+            <div class="error-box"><?= $error; ?></div>
+        <?php endif; ?>
         <form method="post">
             <input type="email" name="gmail" placeholder="Gmail" required>
             <input type="password" name="password" placeholder="Password" required>
-            <button class="btn" type="submit">Login</button>
+            <button class="auth-btn">Login</button>
         </form>
-        <p>Don't have an account? <a href="register.php">Register here</a></p>
+        <p class="switch-link">Don't have an account?  
+            <a href="register.php">Register here</a>
+        </p>
     </div>
-    <script src="js/script.js"></script>
+</div>
+
 </body>
 </html>

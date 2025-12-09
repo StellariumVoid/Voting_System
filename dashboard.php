@@ -15,21 +15,36 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dashboard-page">
+
+    <!-- Top Bar -->
     <div class="top-bar">
         <a href="dashboard.php">
             <img src="Assets/login/Choicehub.png" alt="Logo" id="dashboard-logo">
         </a>
     </div>
-    <div class="user-welcome">
-        <h1>Welcome, <?= htmlspecialchars($_SESSION['username']); ?>!</h1>
-        <a href="logout.php" class="btn">Logout</a>
+
+    <!-- Wrapper (Stops Scroll + Centers) -->
+    <div class="dashboard-container">
+
+        <!-- Centered Content -->
+        <div class="dashboard-content">
+
+            <div class="user-welcome">
+                <h1>Welcome, <?= htmlspecialchars($_SESSION['username']); ?>!</h1>
+                <a href="logout.php" class="btn">Logout</a>
+            </div>
+
+            <div class="nav">
+                <a href="create.php" class="nav-button"><img src="Assets/dashboard/Frame 60.png" alt="Create"></a>
+                <a href="vote-inv.php" class="nav-button"><img src="Assets/dashboard/Frame 61.png" alt="Vote"></a>
+                <a href="manage.php" class="nav-button"><img src="Assets/dashboard/Frame 57.png" alt="Manage"></a>
+                <a href="view.php" class="nav-button"><img src="Assets/dashboard/Frame 58.png" alt="View Results"></a>
+            </div>
+
+        </div>
+
     </div>
-    <div class="nav">
-        <a href="create.php" class="nav-button"><img src="Assets/dashboard/Frame 60.png" alt="Create"></a>
-        <a href="vote-inv.php" class="nav-button"><img src="Assets/dashboard/Frame 61.png" alt="Vote"></a>
-        <a href="manage.php" class="nav-button"><img src="Assets/dashboard/Frame 57.png" alt="Manage"></a>
-        <a href="view.php" class="nav-button"><img src="Assets/dashboard/Frame 58.png" alt="View Results"></a>
-    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $usersFile = __DIR__ . '/data/users.json';
@@ -22,14 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "All fields are required.";
     } elseif ($password !== $confirmPassword) {
         $errors[] = "Passwords do not match.";
-    }  elseif (!filter_var($gmail, FILTER_VALIDATE_EMAIL) || substr($gmail, -10) !== '@gmail.com') {
+    } elseif (!filter_var($gmail, FILTER_VALIDATE_EMAIL) || substr($gmail, -10) !== '@gmail.com') {
         $errors[] = "Please enter a valid Gmail address.";
     } else {
-
         $users = json_decode(file_get_contents($usersFile), true);
-        if (!is_array($users)) {
-        $users = [];
-        }
+        if (!is_array($users)) $users = [];
+
         foreach ($users as $user) {
             if ($user['gmail'] === $gmail) {
                 $errors[] = "Gmail is already registered.";
@@ -50,9 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,25 +56,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>ChoiceHub Register</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="register-page">
-    <div class="top-bar"></div>
-    <!-- Form container -->
-    <div class="container">
-        <img src="Assets/login/Choicehub.png" alt="Logo" class="logo">
+<body class="auth-page">
+
+<div class="auth-container">
+
+    <!-- LEFT -->
+    <div class="auth-left">
+        <h1>ChoiceHub</h1>
+        <p>Empowering communities through voting</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="auth-right">
         <h2>Register</h2>
+
         <?php if (!empty($errors)): ?>
-            <div class="error"><?php echo implode('<br>', $errors); ?></div>
+            <div class="error-box"><?= implode('<br>', $errors); ?></div>
         <?php endif; ?>
+
         <form method="post">
             <input type="text" name="username" placeholder="Username" required>
             <input type="email" name="gmail" placeholder="Gmail" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-            <button class="btn" type="submit">Register</button>
+            <button class="auth-btn">Register</button>
         </form>
-        <p>Already have an account? <a href="index.php">Login</a></p>
+
+        <p class="switch-link">Already have an account?
+            <a href="login.php">Login here</a>
+        </p>
     </div>
 
-    <script src="js/script.js"></script>
+</div>
+
 </body>
 </html>

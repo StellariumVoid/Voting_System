@@ -3,5 +3,15 @@
         "username": "user",
         "gmail": "user@gmail.com",
         "password": "$2y$12$bYKKIULy3XlFFX.vmfciPOKPJkhd\/3uK0c8rLqSMrJ2fpcLa1856y"
+    },
+    {
+        "username": "elijah",
+        "gmail": "elijah@gmail.com",
+        "password": "$2y$12$X3pjMnNR9nC7dleN.vn15.ekq68rfIdnRrDUx1flJGrFdpLneE.G."
+    },
+    {
+        "username": "aaa",
+        "gmail": "aaa@gmail.com",
+        "password": "$2y$12$cQopCg5DYwoiSydezvSvrujU7z5QLiwxzcBadziKnDoXJqkip42vK"
     }
 ]
