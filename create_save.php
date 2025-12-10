@@ -75,8 +75,7 @@ $poll = [
     'end_date' => $ed->format('Y-m-d H:i:s'),
     'max_votes' => (int)$max_votes,
     'created_by' => $_SESSION['username'] ?? $_SESSION['user_id'],
-    'created_at' => (new DateTime())->format('Y-m-d H:i:s'),
-    'invited' => []
+    'created_at' => (new DateTime())->format('Y-m-d H:i:s')
 
 ];
 

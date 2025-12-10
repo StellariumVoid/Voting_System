@@ -1,56 +1,24 @@
 [
     {
-        "id": "bd96381dfd1b0ea8",
+        "id": "b385dceaffca4b0a",
         "title": "poll",
-        "description": "poll desc",
+        "description": "desc",
         "choices": [
             {
-                "id": "e5cddf34",
-                "text": "ch1",
+                "id": "03223502",
+                "text": "a",
                 "votes": 0
             },
             {
-                "id": "05351242",
-                "text": "ch2",
-                "votes": 0
-            },
-            {
-                "id": "fc051434",
-                "text": "ch3",
+                "id": "28d3267a",
+                "text": "b",
                 "votes": 0
             }
         ],
-        "start_date": "2025-12-09 00:00:00",
-        "end_date": "2025-12-10 00:00:00",
+        "start_date": "2025-12-10 00:00:00",
+        "end_date": "2025-12-11 00:00:00",
         "max_votes": 1,
         "created_by": "user",
-        "created_at": "2025-12-09 06:23:29"
-    },
-    {
-        "id": "a2d83b25483b84a6",
-        "title": "poll",
-        "description": "poll desc",
-        "choices": [
-            {
-                "id": "525a2311",
-                "text": "ch1",
-                "votes": 0
-            },
-            {
-                "id": "24cdcd82",
-                "text": "ch2",
-                "votes": 0
-            },
-            {
-                "id": "bd45f110",
-                "text": "ch3",
-                "votes": 0
-            }
-        ],
-        "start_date": "2025-12-09 00:00:00",
-        "end_date": "2025-12-10 00:00:00",
-        "max_votes": 1,
-        "created_by": "user",
-        "created_at": "2025-12-09 06:23:54"
+        "created_at": "2025-12-10 13:45:02"
     }
 ]

@@ -21,6 +21,10 @@ if (!isset($_SESSION['user_id'])) {
     </a>
 </div>
 
+<div class="back-btn-container">
+    <a href="dashboard.php" class="back-btn">⬅ Back to Dashboard</a>
+</div>
+
 <div class="form-wrapper">
     <div class="poll-card">
         <h2>Create New Poll</h2>
