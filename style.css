@@ -326,6 +326,115 @@ input:focus {
     border: 1px solid #f5c6cb;
 }
 
+/* ===== Manage Polls Page ===== */
+.manage-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.manage-card {
+    background: #fff;
+    width: 850px;
+    max-width: 95%;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.18);
+}
+
+/* Head Title */
+.manage-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Polls Table */
+.poll-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.poll-table th {
+    background: #e6f2ff;
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 2px solid #bcd9ff;
+}
+
+.poll-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+}
+
+/* Buttons inside table */
+.table-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 2px;
+}
+
+/* Edit */
+.table-btn.edit {
+    background: #4CAF50;
+    color: white;
+}
+.table-btn.edit:hover {
+    background: #43a047;
+}
+
+/* Delete */
+.table-btn.delete {
+    background: #e74c3c;
+    color: white;
+}
+.table-btn.delete:hover {
+    background: #d42f1f;
+}
+
+/* Copy Link */
+.table-btn.copy {
+    background: #3498db;
+    color: white;
+}
+.table-btn.copy:hover {
+    background: #217dbb;
+}
+
+/* Back Button */
+.back-btn-container {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #4a90e2;
+    color: white;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.back-btn-container:hover {
+    background: #0050a0;
+}
+
+/* No Polls Message */
+.no-polls {
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    color: #444;
+}
+
+/* Flash messages center */
+.manage-flash {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
 
 /* ===== Mobile Responsive ===== */
 @media (max-width: 850px) {

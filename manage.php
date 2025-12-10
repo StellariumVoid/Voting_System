@@ -40,9 +40,7 @@ $userPolls = array_filter($polls, function($p) {
 <div class="dashboard-container">
     <div class="dashboard-content">
 
-        <div class="back-btn-container">
-            <a href="dashboard.php" class="back-btn">⬅ Back to Dashboard</a>
-        </div>
+        <a href="dashboard.php" class="back-btn-container">⬅ Back to Dashboard</a>
 
         <h1>Your Polls</h1>
 
@@ -59,39 +57,54 @@ $userPolls = array_filter($polls, function($p) {
         ?>
 
         <div class="poll-list">
-            <table border="1" cellpadding="6">
-                <tr>
-                    <th>Title</th>
-                    <th>Share</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
+    <table class="poll-table">
+        <tr>
+            <th>Title</th>
+            <th>Share</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
 
-                <?php foreach ($userPolls as $poll): ?>
-                <tr>
-                    <td><?= htmlspecialchars($poll['title']); ?></td>
-                    <td>
-                        <button onclick="copyLink('poll.php?id=<?= $poll['id']; ?>')">
-                            Share Link
-                        </button>
-                    </td>
-                    <td>
-                        <a href="edit.php?id=<?= $poll['id']; ?>">Edit</a>
-                    </td>
-                    <td>
-                        <?php if ($poll['created_by'] === ($_SESSION['username'] ?? $_SESSION['user_id'])): ?>
-                            <a href="delete.php?id=<?= $poll['id']; ?>"
-                               onclick="return confirm('Are you sure you want to delete this poll?');">
-                               Delete
-                            </a>
-                        <?php else: ?>
-                            <span style="color: gray; cursor: not-allowed;" title="You can't delete this poll">Delete</span>
-                        <?php endif; ?>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </table>
-        </div>
+        <?php if (empty($userPolls)): ?>
+            <tr>
+                <td colspan="4" class="no-polls">No polls found</td>
+            </tr>
+        <?php endif; ?>
+
+        <?php foreach ($userPolls as $poll): ?>
+        <tr>
+            <td><?= htmlspecialchars($poll['title']); ?></td>
+
+            <td>
+                <button class="table-btn copy"
+                        onclick="copyLink('poll.php?id=<?= $poll['id']; ?>')">
+                    Copy
+                </button>
+            </td>
+
+            <td>
+                <a class="table-btn edit"
+                   href="edit.php?id=<?= $poll['id']; ?>">
+                   Edit
+                </a>
+            </td>
+
+            <td>
+                <?php if ($poll['created_by'] === ($_SESSION['username'] ?? $_SESSION['user_id'])): ?>
+                    <a class="table-btn delete"
+                       href="delete.php?id=<?= $poll['id']; ?>"
+                       onclick="return confirm('Are you sure you want to delete this poll?');">
+                       Delete
+                    </a>
+                <?php else: ?>
+                    <span style="color: gray; cursor: not-allowed;">Delete</span>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+
 
     </div>
 </div>

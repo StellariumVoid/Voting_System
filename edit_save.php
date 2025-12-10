@@ -38,7 +38,7 @@ foreach ($polls as $index => $p) {
             die("You are not allowed to edit this poll.");
         }
 
-        // Validate choices
+        // Validate & clean choices
         $choices = [];
         foreach ($choices_raw as $c) {
             $t = trim($c);
@@ -48,34 +48,41 @@ foreach ($polls as $index => $p) {
             die("At least 2 choices are required.");
         }
 
+        // Force max_votes <= choices count
+        if ($max_votes > count($choices)) {
+            $max_votes = count($choices);
+        }
+        if ($max_votes < 1) {
+            $max_votes = 1;
+        }
+
         // Validate dates
-        $sd = new DateTime($start_date);
-        $ed = new DateTime($end_date);
+        try {
+            $sd = new DateTime($start_date);
+            $ed = new DateTime($end_date);
+        } catch (Exception $e) {
+            die("Invalid date format.");
+        }      
         if ($ed <= $sd) {
             die("End date must be after start date.");
         }
 
-        // Update poll
+        // Save poll edits
         $polls[$index]['title'] = $title;
         $polls[$index]['description'] = $description;
         $polls[$index]['start_date'] = $sd->format('Y-m-d H:i:s');
         $polls[$index]['end_date'] = $ed->format('Y-m-d H:i:s');
         $polls[$index]['max_votes'] = $max_votes;
 
-        // Update choices (preserve existing votes where possible)
-        $oldChoices = $polls[$index]['choices'] ?? [];
+        // Update choices (preserve votes+id)
         $newChoices = [];
-
         foreach ($choices as $i => $text) {
-            // Keep old ID and votes if exists
-            $oldChoice = $oldChoices[$i] ?? null;
             $newChoices[] = [
-                'id' => $oldChoice['id'] ?? bin2hex(random_bytes(4)),
+                'id' => $polls[$index]['choices'][$i]['id'] ?? bin2hex(random_bytes(4)),
                 'text' => $text,
-                'votes' => $oldChoice['votes'] ?? 0
+                'votes' => $polls[$index]['choices'][$i]['votes'] ?? 0
             ];
         }
-
         $polls[$index]['choices'] = $newChoices;
 
         $found = true;
@@ -87,8 +94,8 @@ if (!$found) {
     die("Poll not found.");
 }
 
-// Save polls
-if (file_put_contents($pollsFile, json_encode($polls, JSON_PRETTY_PRINT)) === false) {
+// Save
+if (file_put_contents($pollsFile, json_encode($polls, JSON_PRETTY_PRINT), LOCK_EX) === false) {
     die("Failed to save changes.");
 }
 
